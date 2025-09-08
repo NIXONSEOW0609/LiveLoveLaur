@@ -1,0 +1,674 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  background-image: url('images/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.letterbody {
+  position: relative;
+  width: 1250px;
+  height: 800px;
+}
+
+.pages {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/assets/paper.png');
+  background-position: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.47);
+  z-index: 1;
+}
+
+.nextpage {
+  position: absolute;
+  top: 1.6%;
+  left: 2%;
+  width: 100%;
+  height: 100%;
+  rotate: 0.6deg;
+  background-image: url('images/assets/paper.png');
+  filter: brightness(90%);
+  background-position: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.47);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  z-index: 1;
+  cursor: pointer;
+
+  animation: clickme 15s ease-in-out infinite;
+  animation-delay: 8s; 
+}
+
+.nextpage:hover {
+  filter: brightness(80%);
+  transform: rotate(0.6deg) scale(1.01);
+}
+
+.prevpage {
+  position: absolute;
+  top: 1.6%;
+  left: -2%;
+  width: 100%;
+  height: 100%;
+  rotate: -0.6deg;
+  background-image: url('images/assets/paper.png');
+  filter: brightness(90%);
+  background-position: center;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.47);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  z-index: 0;
+  cursor: pointer;
+
+  animation: clickme 15s ease-in-out infinite;
+  animation-delay: 16s; 
+}
+
+.prevpage:hover {
+  filter: brightness(80%);
+  transform: rotate(-0.6deg) scale(1.01);
+}
+
+.prevpage.hidden {
+  display: none;
+}
+
+@keyframes clickme {
+  0%, 15%, 100% { transform: rotate(0deg); }
+
+  /* Beat 1 */
+  2% { transform: rotate(0.7deg); }
+  4% { transform: rotate(0deg); }
+  6% { transform: rotate(0.7deg); }
+  8% { transform: rotate(0deg); }
+
+  /* Beat 2 */
+  9% { transform: rotate(0.7deg); }
+  11% { transform: rotate(0deg); }
+  13% { transform: rotate(0.7deg); }
+  15% { transform: rotate(0deg); }
+
+  /* Beat 3 */
+  16% { transform: rotate(0.7deg); }
+  18% { transform: rotate(0deg); }
+  20% { transform: rotate(0.7deg); }
+  22% { transform: rotate(0deg); }
+}
+
+.gif-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  pointer-events: none;
+  opacity: 0; /* start invisible */
+  z-index: 10;
+  transition: opacity 1s ease;
+}
+.gif-overlay.show {
+  opacity: 0.8; /* fade in visible */
+}
+
+
+.page {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Page 1 */
+.page1bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pages/page1.png');
+    z-index: 2;
+}
+
+.lildude {
+    top: 58%;
+    left: 30%;
+    position: absolute;
+    width: 180px;
+    height: 210px;
+    scale: 0.75;
+    background-image: url('images/assets/lildude.png');
+    background-position: 480px 1000px;
+    cursor: pointer;
+    z-index: 5;
+
+    animation: jumping 1.2s steps(1) infinite;
+}
+
+@keyframes jumping {
+  0% { transform: translate(3px, 3px) rotateZ(1deg); }
+  25% { transform: translate(0, -3px) rotateZ(0deg); }
+  50% { transform: translate(-3px, 3px) rotateZ(-1deg); }
+  75% { transform: translate(0, -3px) rotateZ(0deg); }
+  100% { transform: translate(3px, 3px) rotateZ(1deg); }
+}
+
+.grr {
+    top: 43%;
+    left: 78%;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-image: url('images/assets/grr.png');
+    background-position: center;
+    scale: 0.6;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.grr:hover {
+  scale: 0.7;
+}
+
+.cake {
+    top: 64%;
+    left: 17%;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/cake.png');
+    scale: 0.62;
+    cursor: pointer;
+    z-index: 3;
+
+    animation: tilting 3s steps(1) infinite;
+}
+
+.cake:hover {
+  scale: 0.68;
+}
+
+@keyframes tilting {
+  0% { transform: rotateZ(3deg); }
+  25% { transform: rotateZ(-3deg); }
+  50% { transform: rotateZ(3deg); }
+  75% { transform: rotateZ(-3deg); }
+  100% { transform: rotateZ(3deg); }
+}
+
+.flakes {
+    top: -7%;
+    left: -5.5%;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    background-image: url('images/assets/flakes.png');
+    scale: 0.9;
+    opacity: 0.4;
+    z-index: 1;
+
+    animation: falling 3s steps(1) infinite;
+}
+
+.flakes2 {
+    top: 0%;
+    left: -3%;
+    rotate: 15deg;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/flakes2.png');
+    scale: 0.7;
+    opacity: 0.8;
+    z-index: 1;
+
+    animation: falling 3s steps(1) infinite;
+}
+
+.flakes3 {
+    top: 20%;
+    left: 76%;
+    rotate: 54deg;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/flakes2.png');
+    scale: 0.7;
+    opacity: 0.8;
+    z-index: 3;
+
+    animation: falling 3s steps(1) infinite;
+}
+
+.page2 .flakes3 {
+    top: 60%;
+    left: 79%;
+    position: absolute;
+    scale: 0.6;
+    z-index: 2;
+}
+
+.page2 .flakes2 {
+    top: 8%;
+    left: -5%;
+    position: absolute;
+    scale: 0.6;
+}
+
+@keyframes falling {
+  0% { transform: rotateZ(-2deg); }
+  25% { transform: rotateZ(2deg); }
+  50% { transform: rotateZ(-4deg); }
+  75% { transform: rotateZ(-1deg); }
+  100% { transform: rotateZ(1deg); }
+}
+
+/* Page 2 */
+.page2bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pages/page2.png');
+    z-index: 2;
+}
+
+.circle {
+    top: 53%;
+    left: 4.7%;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-image: url('images/assets/circle.png');
+    background-repeat: no-repeat;
+    background-position: -55px 26px;
+    scale: 0.28;
+    z-index: 3;
+
+    animation: rotate 3s steps(1) infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotateZ(45deg); }
+  25% { transform: rotateZ(90deg); }
+  50% { transform: rotateZ(180deg); }
+  75% { transform: rotateZ(270deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+.arrow {
+    top: 47%;
+    left: 1%;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-image: url('images/assets/arrow.png');
+    background-repeat: no-repeat;
+    background-position: 30px 0px;
+    rotate: -40deg;
+    scale: 0.28;
+    z-index: 3;
+
+
+    animation: point 2s steps(1) infinite;
+}
+
+@keyframes point {
+  0%   { transform: translateY(20px); }
+  25%  { transform: translateY(-20px); }
+  50%  { transform: translateY(20px); }
+  75%  { transform: translateY(-20px); } 
+  100% { transform: translateY(20px); }
+}
+
+.bear {
+    top: 67%;
+    left: 55%;
+    position: absolute;
+    width: 350px;
+    height: 320px;
+    scale: 0.62;
+    background-image: url('images/assets/bear.png');
+    background-repeat: no-repeat;
+    transform-origin: center;
+    rotate: 15deg;
+    z-index: 4;
+    cursor: pointer;
+
+    animation: shake 3s steps(1) infinite;
+}
+
+@keyframes shake {
+  0% { transform: rotateZ(5deg),; }
+  25% { transform: rotateZ(-5deg); }
+  50% { transform: rotateZ(8deg); }
+  75% { transform: rotateZ(-8deg); }
+  100% { transform: rotateZ(5deg); }
+}
+
+.fav1 {
+    top: 49%;
+    left: 45.5%;
+    position: absolute;
+    width: 267px;
+    height: 335px;
+    background-image: url('images/assets/fav1.png');
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 5;
+
+    transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+.fav2 {
+    top: 38%;
+    left: 61.5%;
+    position: absolute;
+    width: 267px;
+    height: 335px;
+    background-image: url('images/assets/fav2.png');
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 4;
+
+    transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+.fav3 {
+    top: 36.2%;
+    left: 77.8%;
+    position: absolute;
+    width: 267px;
+    height: 335px;
+    background-image: url('images/assets/fav3.png');
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 3;
+
+    transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+.fav1:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.fav2:hover {
+    transform: scale(1.2);
+}
+
+.fav3:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    z-index: 5;
+}
+
+.heart {
+    top: -10%;
+    left: 76%;
+    rotate: 20deg;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/heart.png');
+    background-repeat: no-repeat;
+    scale: .6;
+    z-index: 3;
+
+    animation: tilting 3s steps(1) infinite;
+}
+
+.heart2 {
+    top: -1%;
+    left: 68.8%;
+    rotate: -25deg;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/heart2.png');
+    background-repeat: no-repeat;
+    scale: .52;
+    z-index: 3;
+
+    animation: tilting 4s steps(2) infinite;
+}
+
+.hat {
+    top: -42%;
+    left: 18%;
+    rotate: 20deg;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/hat.png');
+    background-repeat: no-repeat;
+    scale: 0.25;
+    z-index: 3;
+
+    animation: tilting 3s steps(1) infinite;
+}
+
+.star {
+    top: 66%;
+    left: 26%;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/star.png');
+    background-repeat: no-repeat;
+    scale: 0.6;
+    z-index: 3;
+
+    animation: tilting 3s steps(1) infinite;
+}
+
+.favperson {
+    top: -48%;
+    left: -33%;
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-image: url('images/assets/favperson.png');
+    background-repeat: no-repeat;
+    scale: 0.6;
+    z-index: 3;
+
+    animation: tilting 3s steps(1) infinite;
+}
+
+/* Page 3 */
+.page3bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pages/page3.png');
+    z-index: 2;
+}
+
+.sunset {
+    position: absolute;
+    top: 6%;
+    left: 11.5%;
+    width: 25%;
+    height: 35%;
+    background-image: url('images/assets/sunset.png');
+    background-repeat: no-repeat;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.car {
+    position: absolute;
+    top: 28%;
+    left: 25.5%;
+    width: 25%;
+    height: 39%;
+    background-image: url('images/assets/car.png');
+    background-repeat: no-repeat;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.calc {
+    position: absolute;
+    top: 33%;
+    left: 4%;
+    width: 22%;
+    height: 38%;
+    background-image: url('images/assets/calc.png');
+    background-repeat: no-repeat;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.us {
+    position: absolute;
+    top: 67%;
+    left: 35%;
+    width: 19%;
+    height: 35%;
+    background-image: url('images/assets/us.png');
+    background-repeat: no-repeat;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.poloroid {
+    position: absolute;
+    top: 0%;
+    left: 57.5%;
+    width: 25%;
+    height: 97%;
+    background-image: url('images/assets/poloroid.png');
+    background-repeat: no-repeat;
+    scale: 1.12;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+ 
+.pooki {
+    position: absolute;
+    top: 54%;
+    left: 78%;
+    width: 15%;
+    height: 23%;
+    background-image: url('images/assets/pooki.png');
+    background-repeat: no-repeat;
+    z-index: 3;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.sunset:hover,
+.car:hover,
+.calc:hover,
+.us:hover,
+.poloroid:hover,
+.pooki:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1250px;
+  height: 800px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.image-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.poloroid-gif {
+  width: 1250px;
+  height: 800px;   
+  object-fit: cover; 
+  object-position: center; 
+}
+
+.page3 .heart {
+    top: -8%;
+    left: 78%;
+    position: absolute;
+    scale: 0.8;
+    rotate: 25deg;
+    z-index: 2;
+}
+
+.page3 .heart2 {
+    top: 8%;
+    left: -5%;
+    position: absolute;
+    scale: 0.6;
+    z-index: 2;
+}
+
+.gummy {
+    top: 17.5%;
+    left: 36%;
+    position: absolute;
+    rotate: 25deg;
+    width: 350px;
+    height: 350px;
+    scale: 0.5;
+    background-image: url('images/assets/gummy.png');
+    cursor: pointer;
+    z-index: 5;
+}
+
+.doggi {
+    top: 70%;
+    left: 4%;
+    position: absolute;
+    rotate: -20deg;
+    width: 173px;
+    height: 211px;
+    scale: 1.1;
+    background-image: url('images/assets/dogi.png');
+    cursor: pointer;
+    z-index: 5;
+
+    animation: jumping 1.2s steps(1) infinite;
+}
+
+.page3 .star {
+    top: 18%;
+    left: -10%;
+    position: absolute;
+    scale: 0.3;
+    z-index: 2;
+
+    animation: 0;
+}

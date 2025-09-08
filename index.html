@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope</title>
+  <link rel="stylesheet" href="first.css">
+</head>
+<div class="letterbody"></div>
+<body>
+  <div class="envelope">
+    <!-- Front cover -->
+    <img src="images/assets/front.png" alt="front" class="front-image">
+
+    <!-- Back: existing envelope -->
+    <img src="images/assets/flap.png" alt="flap" class="flap">
+    <div class="back"></div>
+    <img src="images/assets/open.png" alt="open" class="open">
+    <div class="takeletter"></div>
+    <div class="letter"></div>
+    <img src="images/assets/base.png" alt="base" class="base">
+  </div>
+
+  <script>
+    const front = document.querySelector('.front-image');
+    const flap = document.querySelector('.flap');
+    const back = document.querySelector('.back');
+    const base = document.querySelector('.base');
+    const takeletter = document.querySelector('.takeletter');
+    const letter = document.querySelector('.letter');
+    const letterbody = document.querySelector('.letterbody');
+
+    // Audio
+    const takeLetterAudio = new Audio('audio/yipee.mp3');
+    takeLetterAudio.volume = 0.15;
+
+    // Front click: shrink
+    front.addEventListener('click', () => {
+      front.classList.add('shrink');
+      setTimeout(() => {
+        front.style.zIndex = 0;
+      }, 500);
+    });
+
+    // Flap click: toggle open
+    flap.addEventListener('click', () => {
+      flap.classList.toggle('open');
+      setTimeout(() => {
+        if (flap.classList.contains('open')) {
+          flap.style.zIndex = 1;
+        } else {
+          flap.style.zIndex = ''; 
+        }
+      }, 300);
+    });
+
+    // Back click: reset front
+    back.addEventListener('click', () => {
+      setTimeout(() => {
+        front.style.zIndex = 6;
+      }, 300);
+      setTimeout(() => {
+        front.classList.remove('shrink');
+      }, 500);
+    });
+
+    // Take letter click: move letter, play audio, fade in letterbody, then go to main.html
+    takeletter.addEventListener('click', () => {
+      // Move the letter
+      letter.style.top = '10%';
+
+      // Play sound
+      takeLetterAudio.currentTime = 0;
+      takeLetterAudio.play().catch(() => {
+        console.log("Autoplay blocked, will play on user interaction");
+      });
+
+      // Fade in letterbody immediately
+      letterbody.style.opacity = 1;
+      letterbody.style.zIndex = 10;
+
+      // Optional: navigate to main.html after delay
+      setTimeout(() => {
+        window.location.href = "main.html";
+      }, 3200);
+    });
+  </script>
+
+</body>
+</html>
