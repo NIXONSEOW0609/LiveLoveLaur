@@ -163,3 +163,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Show first page on load
   showPage(currentPage);
 });
+
+const button = document.getElementById('openCurtain');
+const leftCurtain = document.querySelector('.curtain.left');
+const rightCurtain = document.querySelector('.curtain.right');
+const content = document.querySelector('.content');
+
+button.addEventListener('click', () => {
+  leftCurtain.classList.add('open');
+  rightCurtain.classList.add('open');
+  content.classList.add('show');
+});
