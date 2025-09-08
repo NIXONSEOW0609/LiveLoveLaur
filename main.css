@@ -677,7 +677,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('images/pages/page3.png');
+    background-image: url('images/pages/page4.png');
     z-index: 2;
 }
 
@@ -686,7 +686,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('images/pages/page3.png');
+    background-image: url('images/pages/page5.png');
     z-index: 2;
 }
 
@@ -695,7 +695,16 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('images/pages/page3.png');
+    background-image: url('images/pages/page6.png');
+    z-index: 2;
+}
+
+/* page6 */
+.page7bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pages/page7.png');
     z-index: 2;
 }
 
@@ -712,9 +721,21 @@ body {
   top: 0;
   width: 50%;
   height: 100%;
-  background-image: url('images/assets/curt.png');
+  background-size: cover;
+  background-position: center;
   z-index: 2;
-  transition: all 1s ease;
+  transition: transform 1s ease;
+}
+
+.curt {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/assets/curt.png');
+  z-index: 3;
+  opacity: 1;
+  transition: opacity 2s ease;
 }
 
 .curtain.left {
@@ -723,39 +744,118 @@ body {
 }
 
 .curtain.right {
-  right: 0;
-  background-image: url('images/assets/right.png');
+  left: 50%;
+  background-image: url('images/assets/left.png');
+  transform: scaleX(-1);
 }
 
 .curtain.open.left {
-  transform: translateX(-90%);
+  transform: translateX(-100%);
 }
 
 .curtain.open.right {
-  transform: translateX(90%);
+  transform: translateX(100%) scaleX(-1);
 }
-
 
 .pg6content {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0; /* fill the container */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 1;
   opacity: 0;
-  transition: opacity 1s ease 1s; /* appear after curtains open */
+  transition: opacity 1s ease 1s; /* delay fade until curtains open */
 }
 
 .pg6content.show {
   opacity: 1;
 }
 
+#openCurtain {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4; /* stays above curtains */
+  
+  background: linear-gradient(135deg, #28a745, #20c420);
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px 28px;
+  
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+#openCurtain:hover {
+  background: linear-gradient(135deg, #20c420, #1aa01a);
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+#openCurtain:active {
+  transform: translateX(-50%) scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.supprise {
+    position: absolute;
+    top: 6%;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pages/Supprise.png');
+    background-repeat: no-repeat;
+}
+
+.pibble {
+    position: absolute;
+    right: 6%;
+    top: 64.5%;
+    width: 16%;
+    height: 32%;
+    background-image: url('images/assets/pibble.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 10000;
+
+    animation: jumping 1.2s steps(1) infinite;
+}
+
+.page4 .star {
+  top: 32%;
+  left: -11%;
+  rotate: 30deg;
+  scale: 0.4;
+
+}
+.page5 .star {
+  top: 32%;
+  left: -11%;
+  rotate: 30deg;
+  scale: 0.4;
+
+}
+
+.page5 .heart2 {
+  top: 70%;
+  left: 68%;
+  rotate: 30deg;
+  scale: 0.4;
+
+}
+
+.page6 .star {
+  top: 68%;
+  left: -5%;
+  rotate: 30deg;
+  scale: 0.6;
+
 }

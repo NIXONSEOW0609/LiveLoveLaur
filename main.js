@@ -167,10 +167,16 @@ document.addEventListener("DOMContentLoaded", () => {
 const button = document.getElementById('openCurtain');
 const leftCurtain = document.querySelector('.curtain.left');
 const rightCurtain = document.querySelector('.curtain.right');
-const content = document.querySelector('.content');
+const pg6content = document.querySelector('.pg6content');
+const curt = document.querySelector('.curt');
 
 button.addEventListener('click', () => {
+  // Open only once
   leftCurtain.classList.add('open');
   rightCurtain.classList.add('open');
-  content.classList.add('show');
+  pg6content.classList.add('show');
+  curt.style.opacity = 0;
+
+  // Make the button disappear
+  button.style.display = "none";
 });
