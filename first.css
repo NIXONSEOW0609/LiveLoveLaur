@@ -12,8 +12,9 @@ body {
 
 .envelope {
   position: relative;
-  width: 780px;
-  height: 550px;
+  width: 90vw;
+  max-width: 780px;
+  aspect-ratio: 780 / 550;
   transform-origin: center;
   transition: transform 0.5s ease;
 }
